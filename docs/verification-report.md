@@ -72,7 +72,24 @@
 - 3D表示は通信が必要（models.rcsb.org から構造を取得）。学祭会場の回線が弱い場合は時間がかかる。
 - 早稲田祭当日の QR は、公開URLを `VITE_PUBLIC_SITE_URL` に設定してビルドしたものを使うこと。
 
-## 公開（Vercel 一時デプロイ）
+## 公開（GitHub Pages）— 正式な公開先
+
+- URL: https://tomoalemon-cloud.github.io/protein-diagnosis/
+- リポジトリ: https://github.com/tomoalemon-cloud/protein-diagnosis（公開）。main への push で GitHub Actions がテスト・ビルド・デプロイを実行
+- ビルド時に `VITE_PUBLIC_SITE_URL` を上記URLに設定済み（QR はこのURLを指す）
+
+| 項目 | 結果（2026-10-31、Claude がブラウザで確認） |
+|---|---|
+| GitHub Actions（npm ci → test → build → deploy） | 確認済み: 成功 |
+| トップ → 8問 → 結果 | 確認済み: `/protein-diagnosis/result/hemoglobin` に到達 |
+| 結果URLの直接アクセス | 確認済み: `/result/gfp` を直接開いて表示（404.html 経由のため HTTP ステータスは404だが画面は正常） |
+| `/admin` | 確認済み: 「ページが見つかりません」 |
+| 構造画像 | 確認済み: サブパス付きのパスで読み込み |
+| 結果ページのQR URL | 確認済み: `https://tomoalemon-cloud.github.io/protein-diagnosis/result/gfp` |
+| Mol* 3D表示 | 確認済み: ヘモグロビン（4HHB）。構造データ取得は約1秒、描画までブラウザペインで約20秒かかった |
+| PNG保存（公開サイト上） | 未確認 |
+
+## 公開（Vercel 一時デプロイ）— 参考
 
 ユーザーの選択により、ログインなしの一時デプロイ（`vercel deploy --temporary`）で公開した（2026-10-31）。
 
