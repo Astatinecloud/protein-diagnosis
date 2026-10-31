@@ -1,0 +1,497 @@
+{
+  "version": 1,
+  "proteins": [
+    {
+      "id": "hemoglobin",
+      "nameJa": "ヘモグロビン",
+      "nameEn": "Hemoglobin",
+      "typeName": "運び屋サポーター",
+      "catchCopy": "必要なものを、必要な場所へ。チームを支える頼れる運び屋",
+      "personality": "困っている人を見つけると、頼まれる前に動いてしまうタイプ。仲間と息を合わせるのが得意で、チーム全体がうまく回っているときに一番うれしさを感じます。",
+      "strengths": [
+        "気配りが細かい",
+        "チームワーク抜群",
+        "フットワークが軽い"
+      ],
+      "weaknesses": [
+        "人の分まで抱え込みがち",
+        "自分のことは後回しにしがち"
+      ],
+      "biology": "ヘモグロビンは赤血球の中にあり、肺で酸素を受け取って全身の組織へ運ぶたんぱく質です。2本のα鎖と2本のβ鎖からなる四量体で、各サブユニットが持つヘム（鉄を含む分子）に酸素が1分子ずつ結合します。1つのサブユニットに酸素が結合すると、ほかのサブユニットも酸素と結合しやすくなる「協同性」を示します。",
+      "funFact": "血液が赤く見えるのは、ヘモグロビンに含まれるヘム（鉄を含む色素）の色によるものです。",
+      "profile": {
+        "action": 1,
+        "harmony": 2,
+        "support": 2,
+        "steady": 0,
+        "flexible": 1,
+        "express": -1,
+        "curious": -1,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "4HHB",
+        "description": "ヒト デオキシヘモグロビン（α2β2 四量体）",
+        "organism": "Homo sapiens（ヒト）",
+        "method": "X線結晶構造解析",
+        "resolution": "1.74 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（α2β2 四量体、機能単位）",
+        "citation": "Fermi, G. et al. (1984) J. Mol. Biol.",
+        "note": "",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "collagen",
+      "nameJa": "コラーゲン",
+      "nameEn": "Collagen",
+      "typeName": "縁の下の力持ち",
+      "catchCopy": "目立たなくても、みんなの土台はわたしがつくる",
+      "personality": "表舞台より裏方で本領を発揮するタイプ。コツコツ続けることが苦にならず、気づけば周りから「いないと困る人」として頼られています。",
+      "strengths": [
+        "粘り強い",
+        "信頼される安定感",
+        "仲間と組むと強い"
+      ],
+      "weaknesses": [
+        "自分の功績をアピールするのが苦手",
+        "急な方針転換に弱い"
+      ],
+      "biology": "コラーゲンは皮膚・骨・腱・軟骨などをつくる結合組織の主成分で、体内で最も多いたんぱく質の一つです。3本のポリペプチド鎖がより合わさった「三重らせん」構造をとり、「グリシン–X–Y」のくり返し配列（Xにはプロリン、Yにはヒドロキシプロリンが多い）がこの構造を支えています。",
+      "funFact": "三重らせんの内側には最も小さいアミノ酸であるグリシンしか入れないため、3残基ごとにグリシンがくり返し現れます。",
+      "profile": {
+        "action": -1,
+        "harmony": 1,
+        "support": 1,
+        "steady": 2,
+        "flexible": 0,
+        "express": -1,
+        "curious": 0,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "1BKV",
+        "description": "コラーゲン様ペプチドの三重らせん（ヒトIII型コラーゲンの配列の一部を含む合成ペプチド）",
+        "organism": "合成ペプチド（配列の一部はヒトIII型コラーゲン由来）",
+        "method": "X線結晶構造解析",
+        "resolution": "2.0 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（三重らせん）",
+        "citation": "Kramer, R.Z. et al. (1999) Nat. Struct. Biol.",
+        "note": "実際のコラーゲン分子は長さ約300 nmの非常に長い分子のため、その一部を模した短いペプチドの構造を表示しています。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "keratin",
+      "nameJa": "ケラチン",
+      "nameEn": "Keratin",
+      "typeName": "鉄壁ガーディアン",
+      "catchCopy": "ちょっとやそっとじゃ崩れない、頼れる守りの要",
+      "personality": "自分のペースと信念を大切にする、芯の強いタイプ。理不尽なことには毅然と立ち向かい、大事なものを最後まで守り抜きます。",
+      "strengths": [
+        "打たれ強い",
+        "責任感が強い",
+        "ブレない"
+      ],
+      "weaknesses": [
+        "ちょっと頑固",
+        "柔軟な方針変更が苦手"
+      ],
+      "biology": "ケラチンは髪の毛・爪・皮膚の最も外側の層などをつくる繊維状のたんぱく質です。2本のαヘリックスが巻きつき合った「コイルドコイル」を基本単位とし、それが束になって「中間径フィラメント」という丈夫な繊維を形成します。髪や爪のケラチンにはシステイン同士のジスルフィド結合（S–S結合）が多く、これが硬さを生み出しています。",
+      "funFact": "パーマは、髪のケラチンのS–S結合をいったん切り、形を変えてからつなぎ直す技術です。",
+      "profile": {
+        "action": 1,
+        "harmony": -1,
+        "support": 1,
+        "steady": 2,
+        "flexible": -1,
+        "express": -1,
+        "curious": 0,
+        "guard": 2
+      },
+      "structure": {
+        "pdbId": "6UUI",
+        "description": "ヒト ケラチン1／ケラチン10 のコイル2Bドメイン（ヘテロ二量体のコイルドコイル）",
+        "organism": "Homo sapiens（ヒト）",
+        "method": "X線結晶構造解析",
+        "resolution": "2.07 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1",
+        "citation": "Lomakin, I.B. et al. (2020) Yale J. Biol. Med.",
+        "note": "皮膚のケラチン（K1/K10）の一部分の構造です。ケラチン全長や繊維全体の構造ではありません。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "insulin",
+      "nameJa": "インスリン",
+      "nameEn": "Insulin",
+      "typeName": "伝令メッセンジャー",
+      "catchCopy": "ひとことで全体を動かす、チームの司令塔",
+      "personality": "状況をすばやく読み取って、必要なメッセージを必要な人へ届けるのが得意なタイプ。自分が前に出るより、全体のバランスを整える役回りでこそ輝きます。",
+      "strengths": [
+        "伝える力が高い",
+        "全体のバランス感覚",
+        "反応が早い"
+      ],
+      "weaknesses": [
+        "一人で抱え込むと疲れやすい",
+        "その場の空気に左右されやすい"
+      ],
+      "biology": "インスリンは膵臓のランゲルハンス島にあるβ細胞から分泌されるホルモンです。食後に血糖値が上がると分泌され、筋肉や脂肪の細胞にブドウ糖を取り込ませるなどして血糖値を下げます。A鎖（21アミノ酸）とB鎖（30アミノ酸）がジスルフィド結合でつながった、とても小さなたんぱく質です。",
+      "funFact": "インスリンはアミノ酸配列が初めて決定されたたんぱく質で、フレデリック・サンガーはこの業績により1958年にノーベル化学賞を受賞しました。",
+      "profile": {
+        "action": -1,
+        "harmony": 1,
+        "support": 0,
+        "steady": -1,
+        "flexible": 0,
+        "express": 2,
+        "curious": -1,
+        "guard": -1
+      },
+      "structure": {
+        "pdbId": "3I40",
+        "description": "ヒト インスリン（A鎖・B鎖）",
+        "organism": "Homo sapiens（ヒト）",
+        "method": "X線結晶構造解析",
+        "resolution": "1.85 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1",
+        "citation": "Timofeev, V.I. et al. (2010) Acta Crystallogr. Sect. F",
+        "note": "",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "actin",
+      "nameJa": "アクチン",
+      "nameEn": "Actin",
+      "typeName": "瞬発アクティブ",
+      "catchCopy": "思い立ったら即行動。変化を楽しむフットワーク番長",
+      "personality": "考えるより先に体が動くタイプ。予定が変わっても「じゃあこっちで！」とすぐ切り替えられます。いつの間にか周りを巻き込んで、物事を前に進めています。",
+      "strengths": [
+        "行動が早い",
+        "切り替え上手",
+        "変化に強い"
+      ],
+      "weaknesses": [
+        "計画をコツコツ守るのは苦手",
+        "飽きっぽいと言われがち"
+      ],
+      "biology": "アクチンは細胞の骨組み（細胞骨格）をつくる、細胞内で最も豊富なたんぱく質の一つです。単量体（G-アクチン）がつながって、らせん状の繊維（F-アクチン、アクチンフィラメント）になります。この繊維は伸びたり分解されたりを素早くくり返し、細胞の形の変化や移動を可能にします。筋肉ではミオシンと協力して収縮を生み出します。",
+      "funFact": "筋肉が縮むのは、アクチンの繊維とミオシンの繊維が互いにすべり合うためです（滑り説）。",
+      "profile": {
+        "action": 2,
+        "harmony": 0,
+        "support": 0,
+        "steady": -2,
+        "flexible": 2,
+        "express": 0,
+        "curious": 0,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "8A2R",
+        "description": "F-アクチン（アクチンフィラメント）の一部分",
+        "organism": "Oryctolagus cuniculus（ウサギ）骨格筋アクチン",
+        "method": "クライオ電子顕微鏡",
+        "resolution": "2.17 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（フィラメントの一部分）",
+        "citation": "Oosterheert, W. et al. (2022) Nature",
+        "note": "細胞内のアクチンフィラメントは非常に長いため、その一部分の構造を表示しています。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "tubulin",
+      "nameJa": "チューブリン",
+      "nameEn": "Tubulin",
+      "typeName": "道をつくる建築家",
+      "catchCopy": "組み立てて、壊して、また組み立てる。柔軟なプランナー",
+      "personality": "「もっといい形があるはず」と、作ったものを何度でも組み直せるタイプ。仲間が動きやすいように道筋を整えるのが得意で、変化の多い状況でこそ実力を発揮します。",
+      "strengths": [
+        "発想が柔軟",
+        "段取り上手",
+        "失敗しても立て直せる"
+      ],
+      "weaknesses": [
+        "同じことのくり返しは退屈",
+        "完成形が決まるまでに時間がかかる"
+      ],
+      "biology": "チューブリンはα-チューブリンとβ-チューブリンが組になった二量体で、これが積み重なって中空の管「微小管」をつくります。微小管は伸びたり急に縮んだりをくり返す「動的不安定性」という性質を持ちます。細胞分裂のときには紡錘体となって染色体を引き分け、ふだんはモータータンパク質が物を運ぶ「レール」として働きます。",
+      "funFact": "抗がん剤のタキソール（パクリタキセル）は微小管を安定化させて細胞分裂を止める薬です。ここで表示している構造も、タキソールが結合した状態のものです。",
+      "profile": {
+        "action": 0,
+        "harmony": 0,
+        "support": 1,
+        "steady": -2,
+        "flexible": 2,
+        "express": 0,
+        "curious": 0,
+        "guard": -1
+      },
+      "structure": {
+        "pdbId": "1JFF",
+        "description": "αβ-チューブリン二量体（タキソール結合型）",
+        "organism": "Bos taurus（ウシ）",
+        "method": "電子線結晶学",
+        "resolution": "3.5 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（αβ二量体）",
+        "citation": "Löwe, J. et al. (2001) J. Mol. Biol.",
+        "note": "微小管全体ではなく、その構成単位であるαβ二量体の構造です。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "gfp",
+      "nameJa": "GFP（緑色蛍光タンパク質）",
+      "nameEn": "Green Fluorescent Protein",
+      "typeName": "ムードメーカー",
+      "catchCopy": "そこにいるだけで、まわりがパッと明るくなる",
+      "personality": "目立とうとしていなくても、自然と周りを明るくしてしまうタイプ。思いついたらすぐ動き、ノリと勢いで場の空気を変えてしまいます。",
+      "strengths": [
+        "存在感がある",
+        "場を盛り上げる",
+        "新しいことにすぐ飛び込める"
+      ],
+      "weaknesses": [
+        "地道なルーティンは苦手",
+        "目立ちすぎて誤解されることも"
+      ],
+      "biology": "GFPはオワンクラゲ（Aequorea victoria）から見つかった、緑色の蛍光を発するたんぱく質です。11本のβストランドが樽のような形（βバレル）をつくり、その中心にある発色団が紫外線〜青色の光を吸収して緑色の光を出します。ほかのたんぱく質の遺伝子とつなげて発現させると、そのたんぱく質が細胞のどこにあるかを光で追跡できます。",
+      "funFact": "GFPの発見と応用により、下村脩、マーティン・チャルフィー、ロジャー・チエンの3氏が2008年にノーベル化学賞を受賞しました。",
+      "profile": {
+        "action": 1,
+        "harmony": 1,
+        "support": 0,
+        "steady": -2,
+        "flexible": 1,
+        "express": 2,
+        "curious": -1,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "1GFL",
+        "description": "オワンクラゲ由来 野生型GFP",
+        "organism": "Aequorea victoria（オワンクラゲ）",
+        "method": "X線結晶構造解析",
+        "resolution": "1.9 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（単量体）",
+        "citation": "Yang, F. et al. (1996) Nat. Biotechnol.",
+        "note": "",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "myosin",
+      "nameJa": "ミオシン",
+      "nameEn": "Myosin",
+      "typeName": "努力のパワーファイター",
+      "catchCopy": "一歩ずつ、でも確実に。力強く前へ進む努力家",
+      "personality": "目標を決めたら、毎日コツコツ積み重ねて必ず形にするタイプ。エネルギーを惜しまず全力投球するので、気づけば周りから一目置かれています。",
+      "strengths": [
+        "根気がある",
+        "パワフル",
+        "目標に一直線"
+      ],
+      "weaknesses": [
+        "急な方向転換は苦手",
+        "がんばりすぎてエネルギー切れになりがち"
+      ],
+      "biology": "ミオシンは、ATPを分解して得たエネルギーを使ってアクチンフィラメントの上を動く「モータータンパク質」です。筋肉では、たくさんのミオシンの頭部がアクチンフィラメントをたぐり寄せることで筋収縮が起こります。筋肉以外の細胞でも、物質の輸送や細胞分裂などで働く仲間がいます。",
+      "funFact": "ミオシンの頭部は、ATPを1分子分解するごとに首を振るように動き、アクチンの上を数ナノメートルずつ進みます。",
+      "profile": {
+        "action": 2,
+        "harmony": 0,
+        "support": 0,
+        "steady": 2,
+        "flexible": -2,
+        "express": 0,
+        "curious": -1,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "2MYS",
+        "description": "ミオシン サブフラグメント1（頭部と軽鎖）",
+        "organism": "Gallus gallus（ニワトリ）骨格筋",
+        "method": "X線結晶構造解析",
+        "resolution": "2.8 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1",
+        "citation": "Rayment, I. et al. (1993) Science",
+        "note": "ミオシン分子のうち、モーターとして働く頭部の構造です。2本の軽鎖はα炭素の座標のみが登録されています。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "p53",
+      "nameJa": "p53",
+      "nameEn": "Tumor suppressor p53",
+      "typeName": "正義の見張り番",
+      "catchCopy": "見逃さない、ゆずらない。みんなを守る冷静な判断者",
+      "personality": "小さな異変にもすぐ気づく観察眼の持ち主。問題を見つけたら「直せるか、止めるべきか」を冷静に判断し、ブレずに行動します。",
+      "strengths": [
+        "観察力が鋭い",
+        "正義感が強い",
+        "冷静に判断できる"
+      ],
+      "weaknesses": [
+        "心配性",
+        "細かいルール違反が気になって疲れてしまう"
+      ],
+      "biology": "p53は、DNAの損傷などの異常を感知すると、DNAの特定の配列に結合して多くの遺伝子の働きを調節する「転写因子」です。細胞周期を止めてDNAを修復する時間をつくったり、修復できない場合は細胞死（アポトーシス）を誘導したりして、細胞のがん化を防ぎます。そのため「ゲノムの守護者」と呼ばれています。",
+      "funFact": "ヒトのがんの約半数で、p53の遺伝子に変異が見つかっています。",
+      "profile": {
+        "action": -1,
+        "harmony": 0,
+        "support": 0,
+        "steady": 0,
+        "flexible": -1,
+        "express": -1,
+        "curious": 2,
+        "guard": 2
+      },
+      "structure": {
+        "pdbId": "1TSR",
+        "description": "ヒト p53 のDNA結合ドメイン（コアドメイン）とDNAの複合体",
+        "organism": "Homo sapiens（ヒト）",
+        "method": "X線結晶構造解析",
+        "resolution": "2.2 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（コアドメイン3分子とDNA二本鎖）",
+        "citation": "Cho, Y. et al. (1994) Science",
+        "note": "細胞内のp53は四量体として働きますが、ここではDNAに結合する中心部分（コアドメイン）の構造を表示しています。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "igg",
+      "nameJa": "抗体（IgG）",
+      "nameEn": "Immunoglobulin G",
+      "typeName": "頼れる用心棒",
+      "catchCopy": "仲間に手を出すヤツは、ぜったい見逃さない",
+      "personality": "ふだんは落ち着いているけれど、いざという時には真っ先に飛び出していく行動派。一度「敵」と覚えた相手のことは忘れず、仲間をしっかり守ります。",
+      "strengths": [
+        "いざという時に頼れる",
+        "記憶力がいい",
+        "一度決めた相手に一途"
+      ],
+      "weaknesses": [
+        "白黒はっきりつけすぎる",
+        "守りに入ると融通がきかない"
+      ],
+      "biology": "抗体（免疫グロブリン）は、B細胞からつくられる免疫のたんぱく質です。IgGは2本の重鎖と2本の軽鎖からなるY字型の分子で、Y字の先端部分（可変部）でウイルスや細菌などの抗原に特異的に結合します。抗体が結合した抗原は、ほかの免疫細胞や補体によって排除されやすくなります。IgGは血液中で最も多い抗体です。",
+      "funFact": "体は抗体の可変部をつくる遺伝子を組み換えることで、膨大な種類の抗体をつくり出すことができます。",
+      "profile": {
+        "action": 2,
+        "harmony": -1,
+        "support": 0,
+        "steady": -1,
+        "flexible": 0,
+        "express": 0,
+        "curious": -1,
+        "guard": 2
+      },
+      "structure": {
+        "pdbId": "1HZH",
+        "description": "ヒト IgG1 抗体（b12）の全体構造",
+        "organism": "Homo sapiens（ヒト）",
+        "method": "X線結晶構造解析",
+        "resolution": "2.7 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（重鎖2本・軽鎖2本のY字型分子）",
+        "citation": "Saphire, E.O. et al. (2001) Science",
+        "note": "",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "atp-synthase",
+      "nameJa": "ATP合成酵素",
+      "nameEn": "ATP synthase",
+      "typeName": "エネルギー職人",
+      "catchCopy": "黙々と回り続けて、みんなの元気をつくり出す",
+      "personality": "自分の持ち場で黙々と手を動かし、いつの間にか大量の仕事を片付けているタイプ。目立つことには興味がありませんが、仕組みを理解して効率よく働くのが好きです。",
+      "strengths": [
+        "安定して成果を出す",
+        "仕組みを考えるのが得意",
+        "みんなのエネルギー源"
+      ],
+      "weaknesses": [
+        "自分の頑張りを伝えるのが苦手",
+        "口数が少なく誤解されがち"
+      ],
+      "biology": "ATP合成酵素は、ミトコンドリアの内膜などにある巨大なたんぱく質複合体です。膜をはさんでできた水素イオン（プロトン）の濃度差を利用して、膜に埋まった部分が回転します。この回転を利用して、ADPとリン酸から生命のエネルギー通貨であるATPを合成します。実際に回転して働く「分子モーター」です。",
+      "funFact": "回転してATPをつくる仕組みの解明により、ポール・ボイヤーとジョン・ウォーカーが1997年にノーベル化学賞を受賞しました。",
+      "profile": {
+        "action": 0,
+        "harmony": -1,
+        "support": 1,
+        "steady": 2,
+        "flexible": 1,
+        "express": -2,
+        "curious": 1,
+        "guard": 0
+      },
+      "structure": {
+        "pdbId": "1QO1",
+        "description": "ATP合成酵素のF1部分と膜内で回転するc10リング",
+        "organism": "Saccharomyces cerevisiae（出芽酵母）",
+        "method": "X線結晶構造解析",
+        "resolution": "3.9 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体1（F1部分＋c10リング）",
+        "citation": "Stock, D. et al. (1999) Science",
+        "note": "ATPをつくる頭部（F1）と、膜の中で回転するリング（c10リング）からなる部分の構造です。固定子（ステーター）など一部のサブユニットは含まれていません。",
+        "assemblyId": "1"
+      }
+    },
+    {
+      "id": "rhodopsin",
+      "nameJa": "ロドプシン",
+      "nameEn": "Rhodopsin",
+      "typeName": "繊細なセンサー",
+      "catchCopy": "小さな変化も見逃さない、感度バツグンの観察者",
+      "personality": "人の表情やその場の空気の変化に、誰よりも先に気づくタイプ。気づいたことをそっとみんなに伝え、チームが動き出すきっかけをつくります。",
+      "strengths": [
+        "観察力・感受性が高い",
+        "気づいたことを伝えられる",
+        "好奇心旺盛"
+      ],
+      "weaknesses": [
+        "刺激が多いと疲れやすい",
+        "自分から先頭に立つのは苦手"
+      ],
+      "biology": "ロドプシンは網膜の桿体細胞にある光センサーのたんぱく質で、暗い場所での視覚を担っています。7本のαヘリックスが細胞膜を貫く構造をとり、内部にビタミンA由来の「レチナール」を結合しています。光を吸収するとレチナールの形が変わり（11-シス型→全トランス型）、その変化がGタンパク質（トランスデューシン）を介して神経の信号に変換されます。",
+      "funFact": "ロドプシンはとても感度が高く、桿体細胞は光の粒（光子）1個にも反応できます。",
+      "profile": {
+        "action": -1,
+        "harmony": 1,
+        "support": 0,
+        "steady": 0,
+        "flexible": 0,
+        "express": 1,
+        "curious": 2,
+        "guard": -1
+      },
+      "structure": {
+        "pdbId": "1F88",
+        "description": "ウシ ロドプシン",
+        "organism": "Bos taurus（ウシ）",
+        "method": "X線結晶構造解析",
+        "resolution": "2.8 Å",
+        "kind": "experimental",
+        "assembly": "生物学的集合体2（著者定義の単量体）",
+        "citation": "Palczewski, K. et al. (2000) Science",
+        "note": "",
+        "assemblyId": "2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "世界が明日終わるとしたら、最後の1日どうする？",
+      "options": [
+        { "id": "q1a", "label": "最後まで誰かを助けに走り回る", "scores": { "guard": 2, "support": 1 } },
+        { "id": "q1b", "label": "大切な人たちとゆっくり過ごす", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q1c", "label": "世界が終わる原因を最後まで調べる", "scores": { "curious": 2, "steady": 1 } },
+        { "id": "q1d", "label": "やりたかったことを全部やって全力で楽しむ", "scores": { "express": 2, "flexible": 1 } }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "文化祭で担当するなら？",
+      "options": [
+        { "id": "q2a", "label": "全体をまとめるリーダー", "scores": { "action": 2, "express": 1 } },
+        { "id": "q2b", "label": "みんなの相談に乗るサポーター", "scores": { "support": 2, "harmony": 1 } },
+        { "id": "q2c", "label": "裏方で装置や看板をつくる技術班", "scores": { "steady": 2, "curious": 1 } },
+        { "id": "q2d", "label": "お客さんを呼び込む宣伝・盛り上げ係", "scores": { "express": 2, "action": 1 } }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "朝起きたら、知らない国の空港にいた。まずどうする？",
+      "options": [
+        { "id": "q3a", "label": "とりあえず外に出て、歩きながら考える", "scores": { "action": 2, "flexible": 1 } },
+        { "id": "q3b", "label": "近くの人に身ぶり手ぶりで話しかけてみる", "scores": { "flexible": 2, "harmony": 1 } },
+        { "id": "q3c", "label": "落ち着いて状況を整理し、スマホで調べる", "scores": { "curious": 2, "steady": 1 } },
+        { "id": "q3d", "label": "まず安全な場所と連絡手段を確保する", "scores": { "guard": 2, "steady": 1 } }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "友達が落ち込んでいる。あなたは？",
+      "options": [
+        { "id": "q4a", "label": "そっと隣にいて、話を聞く", "scores": { "support": 2, "harmony": 1 } },
+        { "id": "q4b", "label": "「気分転換しよう！」と外に連れ出す", "scores": { "action": 2, "express": 1 } },
+        { "id": "q4c", "label": "一緒に原因を整理して、解決策を考える", "scores": { "support": 2, "curious": 1 } },
+        { "id": "q4d", "label": "落ち込ませた相手に、ひとこと言いに行く", "scores": { "guard": 2, "express": 1 } }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "テスト前日の夜、あなたは？",
+      "options": [
+        { "id": "q5a", "label": "いつも通り、計画どおりに復習する", "scores": { "steady": 2, "guard": 1 } },
+        { "id": "q5b", "label": "友達と通話しながら教え合う", "scores": { "harmony": 2, "express": 1 } },
+        { "id": "q5c", "label": "ヤマを張って、一気に追い込む", "scores": { "flexible": 2, "action": 1 } },
+        { "id": "q5d", "label": "気づいたら、テストに出ない分野を深掘りしている", "scores": { "curious": 2, "flexible": 1 } }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "あなたのスマホの使い方に近いのは？",
+      "options": [
+        { "id": "q6a", "label": "撮った写真や動画をすぐシェアする", "scores": { "express": 2, "harmony": 1 } },
+        { "id": "q6b", "label": "気になったことを次々に検索してしまう", "scores": { "curious": 2, "flexible": 1 } },
+        { "id": "q6c", "label": "グループの予定調整や連絡係をしている", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q6d", "label": "通知はほぼオフ。必要なときだけ使う", "scores": { "steady": 2, "guard": 1 } }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "RPGの世界に転生！選ぶ職業は？",
+      "options": [
+        { "id": "q7a", "label": "仲間を回復するヒーラー", "scores": { "support": 2, "curious": 1 } },
+        { "id": "q7b", "label": "最前線で斬り込む剣士", "scores": { "action": 2, "guard": 1 } },
+        { "id": "q7c", "label": "仲間の盾になるナイト", "scores": { "guard": 2, "steady": 1 } },
+        { "id": "q7d", "label": "魔法も剣も使える万能型", "scores": { "flexible": 2, "action": 1 } }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "これから一番大事にしたいものは？",
+      "options": [
+        { "id": "q8a", "label": "信頼できる仲間", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q8b", "label": "自分だけの夢と情熱", "scores": { "express": 2, "action": 1 } },
+        { "id": "q8c", "label": "安心できる毎日", "scores": { "steady": 2, "guard": 1 } },
+        { "id": "q8d", "label": "新しい発見と変化", "scores": { "flexible": 2, "curious": 1 } }
+      ]
+    }
+  ]
+}
