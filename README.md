@@ -65,7 +65,9 @@ npm run preview
 ## GitHub Pages deployment
 
 1. Place this app at the repository root. In Settings > Pages > Source, select **GitHub Actions**.
-2. Push to main or run the Deploy GitHub Pages workflow manually. It sets BASE_PATH and VITE_PUBLIC_SITE_URL for the repository subpath.
+2. Push to main or run the Deploy GitHub Pages workflow manually. It sets BASE_PATH for the repository subpath.
 3. Check /<repo>/result/gfp directly, including images and QR links. The build generates 404.html and an empty .nojekyll. Direct routes render the SPA with GitHub Pages' HTTP 404 status.
+
+共有URL・QRは公開中のURL（実行時の window.location.origin + BASE_URL）から自動生成されるため、VITE_PUBLIC_SITE_URL は通常不要です。独自ドメイン等でURLを固定したい場合のみ設定してください。未設定・空白のみの場合は実行時のURLを使います。
 
 BASE_PATH defaults to /; a trailing slash is optional. VITE_PUBLIC_SITE_URL accepts a subpath with or without a trailing slash; its fallback is the current origin + BASE_URL. Leave BASE_PATH unset for Vercel root hosting. The production admin exclusion remains unchanged.

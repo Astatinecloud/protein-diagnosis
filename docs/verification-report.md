@@ -74,9 +74,9 @@
 
 ## 公開（GitHub Pages）— 正式な公開先
 
-- URL: https://tomoalemon-cloud.github.io/protein-diagnosis/
-- リポジトリ: https://github.com/tomoalemon-cloud/protein-diagnosis（公開）。main への push で GitHub Actions がテスト・ビルド・デプロイを実行
-- ビルド時に `VITE_PUBLIC_SITE_URL` を上記URLに設定済み（QR はこのURLを指す）
+- URL: https://astatinecloud.github.io/protein-diagnosis/（2026-11-01 にユーザー名を tomoalemon-cloud から Astatinecloud に変更。旧URLは404）
+- リポジトリ: https://github.com/Astatinecloud/protein-diagnosis（公開）。main への push で GitHub Actions がテスト・ビルド・デプロイを実行
+- 共有URL・QR は実行時に開いているURL（origin＋サブパス）から生成するため、ユーザー名が変わっても再ビルドなしで追従する（以下の表の旧URLは当時の記録）
 
 | 項目 | 結果（2026-10-31、Claude がブラウザで確認） |
 |---|---|

@@ -10,7 +10,10 @@ import { shareUrl, qrUrl } from '../export/urls';
 
 vi.mock('qrcode', () => ({ toDataURL: vi.fn().mockResolvedValue('data:image/png;base64,qr') }));
 
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+  vi.restoreAllMocks();
+  vi.unstubAllEnvs();
+});
 
 function open(path: string) {
   return render(<MemoryRouter initialEntries={[path]}><App /></MemoryRouter>);
@@ -62,6 +65,8 @@ it('keeps the normal top page and site QR', () => {
     value: function (this: HTMLDialogElement) { this.removeAttribute('open'); },
   });
   open('/');
+  expect(screen.getByText('身近な選択から見つける、あなたらしさ。', { exact: false })).toBeTruthy();
+  expect(screen.getByText(`${data.proteins.length}種類のたんぱく質の世界をのぞいてみよう。`, { exact: false })).toBeTruthy();
   expect(screen.getByRole('link', { name: /診断スタート/ })).toBeTruthy();
   expect(document.querySelector('.site-header a')).toBeTruthy();
   fireEvent.click(screen.getByRole('button', { name: 'このサイトのQRコード' }));
@@ -78,4 +83,15 @@ it('switches the result QR URL per protein and retains play actions', () => {
   open('/result/' + other.id);
   expect(screen.getByRole('link', { name: shareUrl(other.id) }).getAttribute('href')).toBe(shareUrl(other.id));
   expect(shareUrl(other.id)).not.toBe(shareUrl('gfp'));
+});
+
+it.each(data.proteins)('uses the runtime URL for the result QR of $id', protein => {
+  vi.stubEnv('VITE_PUBLIC_SITE_URL', undefined);
+  vi.stubEnv('BASE_URL', '/protein-diagnosis/');
+  open('/result/' + protein.id);
+  const expected = window.location.origin + import.meta.env.BASE_URL + '?result=' + protein.id;
+  const link = screen.getByRole('link', { name: expected });
+  expect(link.closest('.qr')).toBeTruthy();
+  expect(link.getAttribute('href')).toBe(expected);
+  expect(link.getAttribute('href')).not.toContain('tomoalemon');
 });

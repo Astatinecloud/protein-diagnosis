@@ -18,7 +18,7 @@ export default function TopPage() {
         </h1>
         <p className="subtitle">{questions.questions.length}つの質問から、あなたのたんぱく質タイプを診断！</p>
         <p>
-          身近な選択から見つける、あなたらしい働き方。
+          身近な選択から見つける、あなたらしさ。
           <br />
           {data.proteins.length}種類のたんぱく質の世界をのぞいてみよう。
         </p>

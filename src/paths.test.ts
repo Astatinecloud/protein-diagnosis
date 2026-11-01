@@ -6,6 +6,17 @@ import { siteUrl, qrUrl, shareUrl } from './export/urls';
 
 afterEach(() => vi.unstubAllEnvs());
 
+it.each(proteins.proteins)('builds the current GitHub Pages share URL for $id', protein => {
+  vi.stubEnv('BASE_URL', '/protein-diagnosis/');
+  for (const configured of [undefined, '', ' \t ']) {
+    vi.stubEnv('VITE_PUBLIC_SITE_URL', configured);
+    const site = siteUrl(undefined, 'https://astatinecloud.github.io');
+    expect(shareUrl(protein.id, site)).toBe(
+      `https://astatinecloud.github.io/protein-diagnosis/?result=${protein.id}`,
+    );
+  }
+});
+
 describe.each(['/', '/protein-diagnosis/'])('base %s', base => {
   it('uses the base for public images and Molstar assets', () => {
     vi.stubEnv('BASE_URL', base);
