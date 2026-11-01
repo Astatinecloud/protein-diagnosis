@@ -23,12 +23,12 @@
     },
     {
       "id": "q3",
-      "text": "朝起きたら、知らない国の空港にいた。まずどうする？",
+      "text": "受験で選ぶ私立大学は？",
       "options": [
-        { "id": "q3a", "label": "とりあえず外に出て、歩きながら考える", "scores": { "action": 2, "flexible": 1 } },
-        { "id": "q3b", "label": "近くの人に身ぶり手ぶりで話しかけてみる", "scores": { "flexible": 2, "harmony": 1 } },
-        { "id": "q3c", "label": "落ち着いて状況を整理し、スマホで調べる", "scores": { "curious": 2, "steady": 1 } },
-        { "id": "q3d", "label": "まず安全な場所と連絡手段を確保する", "scores": { "guard": 2, "steady": 1 } }
+        { "id": "q3a", "label": "早稲田（日本）", "scores": { "action": 2, "flexible": 1 } },
+        { "id": "q3b", "label": "オックスフォード（UK）", "scores": { "guard": 2, "steady": 1 } },
+        { "id": "q3c", "label": "MIT（USA）", "scores": { "curious": 2, "steady": 1 } },
+        { "id": "q3d", "label": "延世大学（韓国）", "scores": { "flexible": 2, "harmony": 1 } }
       ]
     },
     {
