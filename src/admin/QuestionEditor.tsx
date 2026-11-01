@@ -1,9 +1,10 @@
 import { traitKeys, traits } from '../domain/traits';
 import type { Question } from '../domain/types';
 
-export function QuestionEditor({ question, index, change, move }: {
+export function QuestionEditor({ question, index, count, change, move }: {
   question: Question;
   index: number;
+  count: number;
   change: (question: Question) => void;
   move: (direction: number) => void;
 }) {
@@ -12,7 +13,7 @@ export function QuestionEditor({ question, index, change, move }: {
       <legend>Q{index + 1}</legend>
       <div className="actions">
         <button disabled={index === 0} onClick={() => move(-1)}>上へ</button>
-        <button disabled={index === 7} onClick={() => move(1)}>下へ</button>
+        <button disabled={index === count - 1} onClick={() => move(1)}>下へ</button>
       </div>
       <label>質問文
         <textarea value={question.text} onChange={event => change({ ...question, text: event.target.value })} />

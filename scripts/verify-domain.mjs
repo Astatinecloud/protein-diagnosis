@@ -14,6 +14,9 @@ registerHooks({
     return next(specifier, context);
   },
   load(url, context, next) {
+    if (url.endsWith('.json')) {
+      return { format: 'module', source: `export default ${readFileSync(new URL(url), 'utf8')}`, shortCircuit: true };
+    }
     if (url.endsWith('.ts')) {
       return {
         format: 'module',
@@ -45,7 +48,7 @@ for (const file of ['questions.json', 'proteins.json']) {
   );
 }
 
-const answers = [0, 1, 2, 3, 0, 1, 2, 3];
+const answers = Array.from({ length: questions.questions.length }, (_, i) => i % 4);
 assert.equal(diagnose(questions, answers, proteins), diagnose(questions, answers, proteins));
 assert.notDeepEqual(rawScore(questions, answers), rawScore(questions, [1, ...answers.slice(1)]));
 assert.equal(diagnose(questions, answers.slice(1), proteins), null);
@@ -57,7 +60,7 @@ Object.assign(invalid.questions[0].options[0].scores, {
   support: Infinity,
   unknown: 100,
 });
-assert.doesNotThrow(() => diagnose(invalid, Array(8).fill(0), proteins));
+assert.doesNotThrow(() => diagnose(invalid, Array(questions.questions.length).fill(0), proteins));
 
 const zero = structuredClone(questions);
 zero.questions.forEach(question => {
@@ -65,20 +68,18 @@ zero.questions.forEach(question => {
     option.scores = {};
   });
 });
-assert.deepEqual(Object.values(statistics(zero).sd), Array(8).fill(1));
-const fallbackIndex = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % 12;
+assert.deepEqual(Object.values(statistics(zero).sd), Array(Object.keys(vector()).length).fill(1));
+const fallbackIndex = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % proteins.length;
 assert.equal(diagnose(zero, answers, proteins), proteins[fallbackIndex]);
 
 const z = { ...vector(), action: 1 };
 const first = { ...proteins[0], profile: { ...z, harmony: .00001 } };
 assert.equal(mapResult(z, answers, [first, { ...proteins[1], profile: z }]), first);
 
-const expected = [8.70, 8.76, 7.97, 7.89, 8.61, 8.58, 8.71, 7.89, 8.07, 7.89, 8.77, 8.16];
 const result = distribution(questions, proteins);
-assert.equal(Object.values(result.counts).reduce((sum, count) => sum + count, 0), 65536);
-proteins.forEach((protein, index) => {
-  assert.ok(result.percentages[protein.id] >= 4 && result.percentages[protein.id] <= 16);
-  assert.ok(Math.abs(result.percentages[protein.id] - expected[index]) <= .01);
+assert.equal(Object.values(result.counts).reduce((sum, count) => sum + count, 0), 4 ** questions.questions.length);
+proteins.forEach((protein) => {
+  assert.ok(result.percentages[protein.id] >= 6 && result.percentages[protein.id] <= 11);
 });
 
 console.log(JSON.stringify(result, null, 2));

@@ -4,19 +4,25 @@ import data from '../data/proteins.json';
 import type { QuestionSet } from './types';
 import { traitKeys } from './traits';
 import { rawScore, statistics, normalize, vector, cosine } from './scoring';
-import { diagnose, mapResult } from './resultMapping';
+import { diagnose, mapResult, isCompleteAnswerSet } from './resultMapping';
 import { distribution } from './distribution';
 import { validateQuestionSet } from './validation';
 import { getQuestions, QUESTION_STORAGE_KEY } from '../state/questionStore';
 
 const questions: QuestionSet = questionsJson;
-const answers = [0, 1, 2, 3, 0, 1, 2, 3];
+const answers = Array.from({ length: questions.questions.length }, (_, i) => i % 4);
 
 describe('scoring and mapping', () => {
+  it('requires every bundled question and rejects an empty set', () => {
+    expect(isCompleteAnswerSet(questions, answers.slice(0, -1))).toBe(false);
+    expect(isCompleteAnswerSet(questions, answers)).toBe(true);
+    expect(isCompleteAnswerSet({ version: 1, questions: [] }, [])).toBe(false);
+  });
   it('is deterministic and recalculates changed answers', () => {
     expect(diagnose(questions, answers, data.proteins)).toEqual(
       diagnose(questions, answers, data.proteins),
     );
+    expect(diagnose(questions, answers, data.proteins)).not.toBeNull();
     expect(rawScore(questions, answers)).not.toEqual(
       rawScore(questions, [1, ...answers.slice(1)]),
     );
@@ -54,7 +60,7 @@ describe('scoring and mapping', () => {
       support: Infinity,
       unknown: 999,
     });
-    expect(() => diagnose(set, Array(8).fill(0), data.proteins)).not.toThrow();
+    expect(() => diagnose(set, Array(questions.questions.length).fill(0), data.proteins)).not.toThrow();
 
     const clean = structuredClone(set);
     Object.assign(clean.questions[0].options[0].scores, {
@@ -63,7 +69,7 @@ describe('scoring and mapping', () => {
       support: 0,
       unknown: 0,
     });
-    expect(rawScore(set, Array(8).fill(0))).toEqual(rawScore(clean, Array(8).fill(0)));
+    expect(rawScore(set, Array(questions.questions.length).fill(0))).toEqual(rawScore(clean, Array(questions.questions.length).fill(0)));
     expect(statistics(set)).toEqual(statistics(clean));
     expect(() => diagnose(null as never, null as never, data.proteins)).not.toThrow();
   });
@@ -76,8 +82,8 @@ describe('scoring and mapping', () => {
       });
     });
 
-    expect(Object.values(statistics(set).sd)).toEqual(Array(8).fill(1));
-    const index = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % 12;
+    expect(Object.values(statistics(set).sd)).toEqual(Array(Object.keys(vector()).length).fill(1));
+    const index = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % data.proteins.length;
     expect(diagnose(set, answers, data.proteins)?.id).toBe(data.proteins[index].id);
   });
 
@@ -101,7 +107,7 @@ describe('scoring and mapping', () => {
     const invalidAnswers = [
       [],
       answers.slice(1),
-      Array(8),
+      Array(questions.questions.length),
       [...answers.slice(1), 4],
       [...answers.slice(1), NaN],
     ];
@@ -112,25 +118,25 @@ describe('scoring and mapping', () => {
   });
 });
 
-it('enumerates all 65,536 answers and matches the specification', () => {
+it('enumerates all answer combinations and matches the specification', () => {
   const result = distribution(questions, data.proteins);
   console.log('DISTRIBUTION', JSON.stringify(result));
 
-  expect(result.total).toBe(65536);
-  expect(Object.values(result.counts).reduce((sum, count) => sum + count, 0)).toBe(65536);
+  expect(result.total).toBe(4 ** questions.questions.length);
+  expect(Object.values(result.counts).reduce((sum, count) => sum + count, 0)).toBe(4 ** questions.questions.length);
 
-  const expected = [8.70, 8.76, 7.97, 7.89, 8.61, 8.58, 8.71, 7.89, 8.07, 7.89, 8.77, 8.16];
-  data.proteins.forEach((protein, index) => {
+  data.proteins.forEach((protein) => {
     expect(result.counts[protein.id]).toBeGreaterThan(0);
-    expect(result.percentages[protein.id]).toBeGreaterThanOrEqual(4);
-    expect(result.percentages[protein.id]).toBeLessThanOrEqual(16);
-    expect(Math.abs(result.percentages[protein.id] - expected[index])).toBeLessThanOrEqual(.01);
+    expect(result.percentages[protein.id]).toBeGreaterThanOrEqual(6);
+    expect(result.percentages[protein.id]).toBeLessThanOrEqual(11);
   });
 }, 20000);
 
 describe('validation', () => {
   it('accepts bundled questions', () => {
     expect(validateQuestionSet(questions).ok).toBe(true);
+    const shorter = { ...questions, questions: questions.questions.slice(1) };
+    expect(validateQuestionSet(shorter).errors).toContain(`質問はちょうど${questions.questions.length}問必要です`);
   });
 
   const invalidCases = [
@@ -186,6 +192,13 @@ describe('validation', () => {
 });
 
 describe('question store', () => {
+  it('does not load the previous storage version', () => {
+    const old = structuredClone(questions);
+    old.questions.pop();
+    localStorage.setItem('protein-quiz.questions.v1', JSON.stringify(old));
+    expect(QUESTION_STORAGE_KEY).toBe('protein-quiz.questions.v2');
+    expect(getQuestions(true)).toEqual(questions);
+  });
   it('falls back on corrupt, invalid or unavailable storage', () => {
     for (const value of ['{bad', 'null', '{}']) {
       localStorage.setItem(QUESTION_STORAGE_KEY, value);

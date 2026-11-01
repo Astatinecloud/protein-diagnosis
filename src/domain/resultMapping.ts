@@ -20,12 +20,13 @@ export function mapResult(
 }
 
 export function isCompleteAnswerSet(set: QuestionSet, answers: readonly number[]): boolean {
-  if (!Array.isArray(answers) || answers.length !== 8 || set?.questions?.length !== 8) {
+  const count = set?.questions?.length;
+  if (!count || !Array.isArray(answers) || answers.length !== count) {
     return false;
   }
 
   // Check every position explicitly: sparse arrays must not count as complete.
-  return Array.from({ length: 8 }, (_, index) => index).every(index => {
+  return Array.from({ length: count }, (_, index) => index).every(index => {
     const answer = answers[index];
     return (
       Number.isInteger(answer) &&

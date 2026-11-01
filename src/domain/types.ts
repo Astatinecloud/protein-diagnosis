@@ -30,6 +30,7 @@ export interface Protein {
   weaknesses: string[];
   biology: string;
   funFact: string;
+  zukan: { role: string; summary: string };
   profile: Vector;
   structure: {
     pdbId: string;

@@ -7,10 +7,10 @@ export function distribution(set: QuestionSet, proteins: readonly Protein[]) {
     proteins.map(protein => [protein.id, 0]),
   );
   const stats = statistics(set);
-  const total = 4 ** 8;
+  const total = 4 ** set.questions.length;
 
   for (let n = 0; n < total; n++) {
-    const answers = Array.from({ length: 8 }, (_, q) => Math.floor(n / 4 ** q) % 4);
+    const answers = Array.from({ length: set.questions.length }, (_, q) => Math.floor(n / 4 ** q) % 4);
     const result = mapResult(normalize(rawScore(set, answers), stats), answers, proteins);
 
     if (result) counts[result.id]++;

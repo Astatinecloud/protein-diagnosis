@@ -1,3 +1,4 @@
+import bundled from '../data/questions.json';
 import { traitKeys, type Trait } from './traits';
 import type { QuestionSet } from './types';
 
@@ -13,8 +14,8 @@ export function validateQuestionSet(
     return { ok: false, errors: ['質問セットの形式が不正です'] };
   }
 
-  if (data.questions.length !== 8) {
-    errors.push('質問はちょうど8問必要です');
+  if (data.questions.length !== bundled.questions.length) {
+    errors.push(`質問はちょうど${bundled.questions.length}問必要です`);
   }
 
   const ids = new Set<string>();

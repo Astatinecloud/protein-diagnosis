@@ -12,6 +12,8 @@ function open() {
 
 it('saves validated edits, rejects invalid edits and cancels to the last save', () => {
   open();
+  expect(screen.getAllByLabelText('質問文')).toHaveLength(bundled.questions.length);
+  expect(screen.getAllByRole('button', { name: '下へ' }).at(-1)?.hasAttribute('disabled')).toBe(true);
   const question = screen.getAllByLabelText('質問文')[0];
   fireEvent.change(question, { target: { value: '編集した質問' } });
   fireEvent.click(screen.getByRole('button', { name: '保存' }));

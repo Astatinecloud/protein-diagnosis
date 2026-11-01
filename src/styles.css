@@ -533,3 +533,41 @@ th, td { padding: 10px; border-bottom: 1px solid #dce5e8; text-align: left; }
   .modal-header h2 { font-size: 1rem; }
   .result-actions .actions button { width: 100%; }
 }
+
+/* Protein encyclopedia */
+.zukan { padding: 32px 0; }
+.zukan > .button { max-width: 100%; }
+.zukan-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  margin: 28px 0;
+}
+.zukan-card {
+  min-width: 0;
+  padding: 20px;
+  border: 3px solid #e6edef;
+  border-radius: 16px;
+  background: #fff;
+}
+.zukan-card-selected { border: 4px solid var(--teal); }
+.zukan-badge { color: #087b71; font-weight: 700; margin-top: 0; }
+.zukan-image-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid #edf1f3;
+  border-radius: 12px;
+}
+.zukan-image-frame img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; }
+.zukan-image-frame img[hidden] { display: none; }
+.zukan-image-frame p { padding: 12px; text-align: center; }
+.zukan-card h2 { margin-bottom: 6px; }
+.zukan-english { font-size: .85rem; color: #64727c; margin-top: 0; }
+@media (min-width: 600px) {
+  .zukan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 960px) {
+  .zukan-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

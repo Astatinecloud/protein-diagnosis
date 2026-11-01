@@ -28,7 +28,7 @@
         { "id": "q3a", "label": "早稲田（日本）", "scores": { "action": 2, "flexible": 1 } },
         { "id": "q3b", "label": "オックスフォード（UK）", "scores": { "guard": 2, "steady": 1 } },
         { "id": "q3c", "label": "MIT（USA）", "scores": { "curious": 2, "steady": 1 } },
-        { "id": "q3d", "label": "延世大学（韓国）", "scores": { "flexible": 2, "harmony": 1 } }
+        { "id": "q3d", "label": "ハーバード（USA）", "scores": { "flexible": 2, "harmony": 1 } }
       ]
     },
     {
@@ -53,12 +53,12 @@
     },
     {
       "id": "q6",
-      "text": "あなたのスマホの使い方に近いのは？",
+      "text": "明日提出のレポート、まだ白紙。どうする？",
       "options": [
-        { "id": "q6a", "label": "撮った写真や動画をすぐシェアする", "scores": { "express": 2, "harmony": 1 } },
-        { "id": "q6b", "label": "気になったことを次々に検索してしまう", "scores": { "curious": 2, "flexible": 1 } },
-        { "id": "q6c", "label": "グループの予定調整や連絡係をしている", "scores": { "harmony": 2, "support": 1 } },
-        { "id": "q6d", "label": "通知はほぼオフ。必要なときだけ使う", "scores": { "steady": 2, "guard": 1 } }
+        { "id": "q6a", "label": "友達に「どこまで終わった？」と聞きまくる", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q6b", "label": "今から本気出す。徹夜で完成させる！", "scores": { "action": 2, "flexible": 1 } },
+        { "id": "q6c", "label": "まずは計画を立てる。睡眠時間も死守！", "scores": { "steady": 2, "guard": 1 } },
+        { "id": "q6d", "label": "AIとコーヒーを召喚して奇跡を起こす", "scores": { "flexible": 2, "curious": 1 } }
       ]
     },
     {
@@ -68,17 +68,27 @@
         { "id": "q7a", "label": "仲間を回復するヒーラー", "scores": { "support": 2, "curious": 1 } },
         { "id": "q7b", "label": "最前線で斬り込む剣士", "scores": { "action": 2, "guard": 1 } },
         { "id": "q7c", "label": "仲間の盾になるナイト", "scores": { "guard": 2, "steady": 1 } },
-        { "id": "q7d", "label": "魔法も剣も使える万能型", "scores": { "flexible": 2, "action": 1 } }
+        { "id": "q7d", "label": "強力な爆炎を放つ魔法使い", "scores": { "flexible": 2, "action": 1 } }
       ]
     },
     {
       "id": "q8",
+      "text": "早稲田といえば油そば！トッピングは？",
+      "options": [
+        { "id": "q8a", "label": "にんにく", "scores": { "express": 2, "harmony": 1 } },
+        { "id": "q8b", "label": "チャーシュー", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q8c", "label": "ネギ", "scores": { "curious": 2, "flexible": 1 } },
+        { "id": "q8d", "label": "メンマ", "scores": { "guard": 2, "steady": 1 } }
+      ]
+    },
+    {
+      "id": "q9",
       "text": "これから一番大事にしたいものは？",
       "options": [
-        { "id": "q8a", "label": "信頼できる仲間", "scores": { "harmony": 2, "support": 1 } },
-        { "id": "q8b", "label": "自分だけの夢と情熱", "scores": { "express": 2, "action": 1 } },
-        { "id": "q8c", "label": "安心できる毎日", "scores": { "steady": 2, "guard": 1 } },
-        { "id": "q8d", "label": "新しい発見と変化", "scores": { "flexible": 2, "curious": 1 } }
+        { "id": "q9a", "label": "信頼できる仲間", "scores": { "harmony": 2, "support": 1 } },
+        { "id": "q9b", "label": "自分だけの夢と情熱", "scores": { "express": 2, "action": 1 } },
+        { "id": "q9c", "label": "安心できる毎日", "scores": { "steady": 2, "guard": 1 } },
+        { "id": "q9d", "label": "新しい発見と変化", "scores": { "flexible": 2, "curious": 1 } }
       ]
     }
   ]

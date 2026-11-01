@@ -101,14 +101,14 @@ export default function AdminPage() {
         <button disabled={busy} onClick={showDistribution}>結果分布を確認</button>
       </div>
       {message && <p role="status">{message}</p>}
-      {busy && <p role="status">65,536通りを計算中…</p>}
+      {busy && <p role="status">{(4 ** draft.questions.length).toLocaleString()}通りを計算中…</p>}
       {errors.length > 0 && <ul role="alert">{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>}
       {percentages && (
-        <table><caption>全65,536通りの結果分布（赤: 0%、黄: 4%未満・16%超）</caption>
+        <table><caption>全{(4 ** draft.questions.length).toLocaleString()}通りの結果分布（赤: 0%、黄: 6%未満・11%超）</caption>
           <thead><tr><th>たんぱく質</th><th>割合</th></tr></thead>
           <tbody>{proteins.proteins.map(protein => {
             const percent = percentages[protein.id];
-            const warning = percent === 0 ? 'unreachable' : percent < 4 || percent > 16 ? 'warning' : '';
+            const warning = percent === 0 ? 'unreachable' : percent < 6 || percent > 11 ? 'warning' : '';
             return <tr key={protein.id} className={warning}>
               <th>{protein.nameJa}</th><td>{percent.toFixed(2)}%{percent === 0 && '（到達不能）'}</td>
             </tr>;
@@ -116,7 +116,7 @@ export default function AdminPage() {
         </table>
       )}
       {draft.questions.map((question, index) => (
-        <QuestionEditor key={question.id} question={question} index={index}
+        <QuestionEditor key={question.id} question={question} index={index} count={draft.questions.length}
           change={next => {
             setDraft({ ...draft, questions: draft.questions.map((value, i) => i === index ? next : value) });
             setPercentages(null);

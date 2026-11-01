@@ -46,6 +46,11 @@ export default function ResultPage() {
         <StructureDataSection protein={protein} />
         <ResultActions protein={protein} />
         <div className="restart">
+          <Link className="button" to={`/result/${protein.id}/zukan`}>
+            ほかのタンパク質も見てみる！
+          </Link>
+        </div>
+        <div className="restart">
           <Link className="button" to="/" onClick={reset}>
             もう一度診断する
           </Link>

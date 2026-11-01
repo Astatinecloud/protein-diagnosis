@@ -4,7 +4,7 @@ import { useQuiz } from '../state/QuizContext';
 
 export default function QuizPage() {
   const { questions, answers, answer } = useQuiz();
-  const [index, setIndex] = useState(() => Math.min(answers.length, 7));
+  const [index, setIndex] = useState(() => Math.min(answers.length, questions.questions.length - 1));
   const [pending, setPending] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>();
   const heading = useRef<HTMLHeadingElement>(null);
@@ -23,7 +23,7 @@ export default function QuizPage() {
     setPending(true);
     timer.current = setTimeout(() => {
       setPending(false);
-      if (index === 7) {
+      if (index === questions.questions.length - 1) {
         navigate('/diagnosing');
       } else {
         setIndex(index + 1);
@@ -34,10 +34,10 @@ export default function QuizPage() {
   return (
     <section className="quiz">
       <div className="progress-label">
-        <span>Q{index + 1} / 8</span>
+        <span>Q{index + 1} / {questions.questions.length}</span>
         <span>あなたについて教えてください</span>
       </div>
-      <progress value={index + 1} max={8} aria-label="質問の進捗" />
+      <progress value={index + 1} max={questions.questions.length} aria-label="質問の進捗" />
       <div className="question-slide" key={question.id}>
         <h1 ref={heading} tabIndex={-1}>
           {question.text}
