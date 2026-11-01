@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { assetPath, routerBasename } from './paths';
 import { imagePath } from './structures/structures';
 import proteins from './data/proteins.json';
-import { siteUrl, qrUrl } from './export/urls';
+import { siteUrl, qrUrl, shareUrl } from './export/urls';
 
 afterEach(() => vi.unstubAllEnvs());
 
@@ -20,11 +20,16 @@ describe.each(['/', '/protein-diagnosis/'])('base %s', base => {
     vi.stubEnv('BASE_URL', base);
     vi.stubEnv('VITE_PUBLIC_SITE_URL', '');
     expect(qrUrl()).toBe(window.location.origin + base);
+    expect(shareUrl('gfp')).toBe(window.location.origin + base + '?result=gfp');
     expect(qrUrl('gfp')).toBe(window.location.origin + base + 'result/gfp');
     expect(siteUrl(' ', 'https://example.com')).toBe(('https://example.com' + base).replace(/\/+$/, ''));
   });
   it.each(['https://example.com/custom', 'https://example.com/custom/'])('honors configured site %s', configured => {
     const site = siteUrl(configured, 'https://ignored.com', base);
+    vi.stubEnv('BASE_URL', base);
+    vi.stubEnv('VITE_PUBLIC_SITE_URL', configured);
+    expect(shareUrl('gfp')).toBe('https://example.com/custom/?result=gfp');
+    expect(shareUrl('a/b &', configured + '//')).toBe('https://example.com/custom/?result=a%2Fb%20%26');
     expect(qrUrl(undefined, site)).toBe('https://example.com/custom/');
     expect(qrUrl('a/b', configured)).toBe('https://example.com/custom/result/a%2Fb');
   });

@@ -6,3 +6,7 @@ export function qrUrl(proteinId?: string, site = siteUrl()) {
   const root = site.replace(/\/+$/, '');
   return proteinId ? root + '/result/' + encodeURIComponent(proteinId) : root + '/';
 }
+
+export function shareUrl(proteinId: string, site = siteUrl()) {
+  return site.replace(/\/+$/, '') + '/?result=' + encodeURIComponent(proteinId);
+}

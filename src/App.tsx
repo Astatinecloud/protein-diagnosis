@@ -8,6 +8,7 @@ import TopPage from './pages/TopPage';
 import QuizPage from './pages/QuizPage';
 import DiagnosingPage from './pages/DiagnosingPage';
 import ResultPage from './pages/ResultPage';
+import SharedResultPage from './pages/SharedResultPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { lazy, Suspense } from 'react';
 
@@ -21,12 +22,24 @@ function SiteNote() {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, search } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname, search]);
   return null;
 }
 
 export default function App() {
+  const { pathname, search } = useLocation();
+  const shared = pathname === '/' && new URLSearchParams(search).has('result');
+  if (shared) {
+    return <>
+      <ScrollToTop />
+      <header className="site-header"><span className="site-logo">
+          ○—○ <span>たんぱく質診断</span>
+        </span></header>
+      <main><SharedResultPage /></main>
+    </>;
+  }
+
   return (
     <QuizProvider>
       <ScrollToTop />

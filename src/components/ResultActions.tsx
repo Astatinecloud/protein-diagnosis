@@ -1,11 +1,12 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import type { Protein } from '../domain/types';
+import { shareUrl } from '../export/urls';
 import { QrCode } from './QrCode';
 import { Modal } from './Modal';
 
 const StructureViewer = lazy(() => import('./StructureViewer'));
 
-export function ResultActions({ protein }: { protein: Protein }) {
+export function ResultActions({ protein, mode = 'play' }: { protein: Protein; mode?: 'play' | 'shared' }) {
   const [viewer, setViewer] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -42,8 +43,11 @@ export function ResultActions({ protein }: { protein: Protein }) {
         <button onClick={save} disabled={busy}>{busy ? '画像を作成中…' : '結果画像を保存'}</button>
       </div>
       {error && <p role="alert">{error}</p>}
-      <h2>この結果ページのQRコード</h2>
-      <QrCode proteinId={protein.id} />
+      {mode === 'play' && <>
+        <h2>この結果をスマホで見る</h2>
+        <p>QRコードを読み取ると、この診断結果だけをスマホで見られます。</p>
+        <QrCode url={shareUrl(protein.id)} />
+      </>}
       {viewer && <Suspense fallback={<p role="status">読み込み中…</p>}>
         <StructureViewer protein={protein} close={() => setViewer(false)} />
       </Suspense>}
