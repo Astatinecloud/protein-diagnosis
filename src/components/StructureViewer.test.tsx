@@ -29,7 +29,7 @@ it('shows fallback links when WebGL is unavailable and permits closing', async (
   render(<StructureViewer protein={data.proteins[0]} close={close} />);
   expect(await screen.findByRole('alert')).toBeTruthy();
   expect(screen.getByRole('link', { name: 'RCSB PDBで見る（3D）' }).getAttribute('href'))
-    .toBe('https://www.rcsb.org/3d-view/4HHB/1');
+    .toBe(`https://www.rcsb.org/3d-view/${data.proteins[0].structure.pdbId}/1`);
   expect(screen.getByRole('link', { name: 'RCSB PDBで見る（構造データ）' })).toBeTruthy();
   fireEvent.click(screen.getByRole('button', { name: '閉じる' }));
   expect(close).toHaveBeenCalledOnce();

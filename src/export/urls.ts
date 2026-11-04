@@ -1,4 +1,8 @@
-export function siteUrl(configured = import.meta.env.VITE_PUBLIC_SITE_URL, origin = window.location.origin, base = import.meta.env.BASE_URL) {
+export function siteUrl(
+  configured = import.meta.env.VITE_PUBLIC_SITE_URL,
+  origin = window.location.origin,
+  base = import.meta.env.BASE_URL,
+) {
   return (configured?.trim() || origin + base).replace(/\/+$/, '');
 }
 

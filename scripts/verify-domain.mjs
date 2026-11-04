@@ -30,7 +30,7 @@ registerHooks({
 });
 
 const { distribution } = await import('../src/domain/distribution.ts');
-const { diagnose, mapResult } = await import('../src/domain/resultMapping.ts');
+const { diagnose } = await import('../src/domain/resultMapping.ts');
 const { statistics, rawScore, vector } = await import('../src/domain/scoring.ts');
 const { validateQuestionSet } = await import('../src/domain/validation.ts');
 const questions = JSON.parse(
@@ -72,18 +72,14 @@ assert.deepEqual(Object.values(statistics(zero).sd), Array(Object.keys(vector())
 const fallbackIndex = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % proteins.length;
 assert.equal(diagnose(zero, answers, proteins), proteins[fallbackIndex]);
 
-const z = { ...vector(), action: 1 };
-const first = { ...proteins[0], profile: { ...z, harmony: .00001 } };
-assert.equal(mapResult(z, answers, [first, { ...proteins[1], profile: z }]), first);
-
 const result = distribution(questions, proteins);
 assert.equal(Object.values(result.counts).reduce((sum, count) => sum + count, 0), 4 ** questions.questions.length);
 proteins.forEach((protein) => {
-  assert.ok(result.percentages[protein.id] >= 6 && result.percentages[protein.id] <= 11);
+  assert.ok(result.percentages[protein.id] >= 5 && result.percentages[protein.id] <= 7.5);
 });
 
 console.log(JSON.stringify(result, null, 2));
 console.log(
   'PASS: data byte equality, validation, determinism, changed answers, invalid scores, '
-    + 'incomplete answers, zero SD, fallback, ties, and full distribution.',
+    + 'incomplete answers, zero SD, fallback, and full distribution.',
 );

@@ -58,7 +58,9 @@ it('shows all questions, retains answers, permits changes and reaches a result',
   fireEvent.click(screen.getByRole('link', { name: /たんぱく質診断/ }));
   fireEvent.click(screen.getByRole('link', { name: /診断スタート/ }));
   expect(screen.getByText(`Q${questions.questions.length} / ${questions.questions.length}`)).toBeTruthy();
-  expect(screen.getByRole('button', { pressed: true }).textContent).toContain(questions.questions.at(-1)!.options[0].label);
+  expect(screen.getByRole('button', { pressed: true }).textContent).toContain(
+    questions.questions.at(-1)!.options[0].label,
+  );
   fireEvent.click(screen.getByRole('button', { pressed: true }));
   act(() => vi.advanceTimersByTime(1750));
   act(() => vi.advanceTimersByTime(1500));

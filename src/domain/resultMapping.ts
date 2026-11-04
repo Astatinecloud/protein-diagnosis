@@ -1,11 +1,13 @@
+import { axes, identity, whitening, type Matrix } from './whitening';
 import { traitKeys } from './traits';
-import { cosine, normalize, rawScore, statistics } from './scoring';
+import { normalize, rawScore, statistics } from './scoring';
 import type { Protein, QuestionSet, Vector } from './types';
 
 export function mapResult(
   z: Vector,
   answers: readonly number[],
   proteins: readonly Protein[],
+  transform: Matrix = identity(),
 ): Protein | null {
   if (!proteins?.length) return null;
 
@@ -14,9 +16,13 @@ export function mapResult(
     return proteins[index] ?? null;
   }
 
-  const similarities = proteins.map(protein => cosine(z, protein?.profile));
-  const max = Math.max(...similarities);
-  return proteins[similarities.findIndex(value => max - value <= 1e-9)] ?? null;
+  const d = axes(z);
+  const code = transform.map((row, i) =>
+    row.reduce((sum, value, j) => sum + value * d[j], 0) > 0
+      ? ['E', 'B', 'U', 'H'][i]
+      : ['N', 'S', 'T', 'X'][i],
+  ).join('');
+  return proteins.find(protein => protein.typeCode === code) ?? null;
 }
 
 export function isCompleteAnswerSet(set: QuestionSet, answers: readonly number[]): boolean {
@@ -45,5 +51,5 @@ export function diagnose(
   if (!isCompleteAnswerSet(set, answers)) return null;
 
   const z = normalize(rawScore(set, answers), statistics(set));
-  return mapResult(z, answers, proteins);
+  return mapResult(z, answers, proteins, whitening(set));
 }

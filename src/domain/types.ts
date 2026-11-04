@@ -31,7 +31,8 @@ export interface Protein {
   biology: string;
   funFact: string;
   zukan: { role: string; summary: string };
-  profile: Vector;
+  typeCode: string;
+  classificationNote: string;
   structure: {
     pdbId: string;
     description: string;
@@ -45,3 +46,5 @@ export interface Protein {
     assemblyId: string;
   };
 }
+
+export interface RetiredProtein { id: string; nameJa: string }

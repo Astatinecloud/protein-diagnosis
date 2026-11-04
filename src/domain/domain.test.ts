@@ -3,8 +3,8 @@ import questionsJson from '../data/questions.json';
 import data from '../data/proteins.json';
 import type { QuestionSet } from './types';
 import { traitKeys } from './traits';
-import { rawScore, statistics, normalize, vector, cosine } from './scoring';
-import { diagnose, mapResult, isCompleteAnswerSet } from './resultMapping';
+import { rawScore, statistics, normalize, vector } from './scoring';
+import { diagnose, isCompleteAnswerSet } from './resultMapping';
 import { distribution } from './distribution';
 import { validateQuestionSet } from './validation';
 import { getQuestions, QUESTION_STORAGE_KEY } from '../state/questionStore';
@@ -69,7 +69,9 @@ describe('scoring and mapping', () => {
       support: 0,
       unknown: 0,
     });
-    expect(rawScore(set, Array(questions.questions.length).fill(0))).toEqual(rawScore(clean, Array(questions.questions.length).fill(0)));
+    expect(rawScore(set, Array(questions.questions.length).fill(0))).toEqual(
+      rawScore(clean, Array(questions.questions.length).fill(0)),
+    );
     expect(statistics(set)).toEqual(statistics(clean));
     expect(() => diagnose(null as never, null as never, data.proteins)).not.toThrow();
   });
@@ -85,22 +87,6 @@ describe('scoring and mapping', () => {
     expect(Object.values(statistics(set).sd)).toEqual(Array(Object.keys(vector()).length).fill(1));
     const index = answers.reduce((sum, answer, q) => sum + answer * 4 ** q, 0) % data.proteins.length;
     expect(diagnose(set, answers, data.proteins)?.id).toBe(data.proteins[index].id);
-  });
-
-  it('uses cosine and resolves ties within tolerance by order', () => {
-    const z = { ...vector(), action: 1 };
-    expect(cosine(z, z)).toBe(1);
-
-    const first = {
-      ...data.proteins[0],
-      profile: { ...vector(), action: 1, harmony: 0.00001 },
-    };
-    const second = { ...data.proteins[1], profile: z };
-    expect(mapResult(z, answers, [first, second])).toBe(first);
-    expect(mapResult(z, answers, [
-      { ...first, profile: { ...z, harmony: 1 } },
-      second,
-    ])).toBe(second);
   });
 
   it('rejects incomplete and invalid answers', () => {
@@ -127,8 +113,8 @@ it('enumerates all answer combinations and matches the specification', () => {
 
   data.proteins.forEach((protein) => {
     expect(result.counts[protein.id]).toBeGreaterThan(0);
-    expect(result.percentages[protein.id]).toBeGreaterThanOrEqual(6);
-    expect(result.percentages[protein.id]).toBeLessThanOrEqual(11);
+    expect(result.percentages[protein.id]).toBeGreaterThanOrEqual(5);
+    expect(result.percentages[protein.id]).toBeLessThanOrEqual(7.5);
   });
 }, 20000);
 

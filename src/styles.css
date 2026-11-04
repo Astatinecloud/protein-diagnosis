@@ -571,3 +571,25 @@ th, td { padding: 10px; border-bottom: 1px solid #dce5e8; text-align: left; }
 @media (min-width: 960px) {
   .zukan-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+.type-code { color: #0f9b8e; font-size: 2rem; font-weight: 700; letter-spacing: .12em; margin: 12px 0; }
+.classification ul { padding-left: 1.4em; }
+.classification-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: .85rem;
+
+}
+.classification-table th:first-child { width: 2.5em; }
+.classification-table th, .classification-table td {
+  border: 1px solid #dce5e8;
+  padding: 6px 3px;
+  overflow-wrap: anywhere;
+
+}
+.classification-table a { display: block; text-decoration: none; }
+.classification-table .selected { background: #e7f7f4; outline: 2px solid #0f9b8e; outline-offset: -2px; }
+.zukan-card { scroll-margin-top: 20px; }
+@media (max-width: 400px) { .classification-table { font-size: .7rem; } }

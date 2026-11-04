@@ -1,3 +1,4 @@
+import { Classification } from './Classification';
 import { Link } from 'react-router-dom';
 import type { Protein } from '../domain/types';
 import { Disclaimer } from './Shared';
@@ -17,6 +18,7 @@ export function ResultBody({ protein, mode, onReplay }: {
     <>
       <article className="result">
         <ResultHeader protein={protein} />
+        <Classification protein={protein} full />
         <img
           className="structure-image"
           src={imagePath(protein)}

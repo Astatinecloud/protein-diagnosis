@@ -1,6 +1,6 @@
 # あなたはどのたんぱく質？
 
-早稲田祭向けの診断Webアプリです。8問の4択から12種類のたんぱく質タイプを表示します。
+早稲田祭向けの診断Webアプリです。9問の4択から16種類のたんぱく質タイプを表示します。
 React / TypeScript / Vite で動く静的サイトで、回答はメモリ内だけに保持します。
 
 ## セットアップ
@@ -57,7 +57,8 @@ npm run preview
 結果画面・PNGにPDB IDと画像クレジットを表示しています。
 
 - Mol*: Sehnal et al. (2021), Nucleic Acids Research, DOI: [10.1093/nar/gkab314](https://doi.org/10.1093/nar/gkab314)
-- RCSB PDB: Berman et al. (2000), Nucleic Acids Research, DOI: [10.1093/nar/28.1.235](https://doi.org/10.1093/nar/28.1.235)
+- RCSB PDB: Berman et al. (2000), Nucleic Acids Research, DOI:
+   [10.1093/nar/28.1.235](https://doi.org/10.1093/nar/28.1.235)
 
 この診断は、たんぱく質の働きを性格にたとえて楽しむエンターテインメントです。
 科学的な性格検査ではありません。
@@ -66,8 +67,15 @@ npm run preview
 
 1. Place this app at the repository root. In Settings > Pages > Source, select **GitHub Actions**.
 2. Push to main or run the Deploy GitHub Pages workflow manually. It sets BASE_PATH for the repository subpath.
-3. Check /<repo>/result/gfp directly, including images and QR links. The build generates 404.html and an empty .nojekyll. Direct routes render the SPA with GitHub Pages' HTTP 404 status.
+3. Check /<repo>/result/gfp directly, including images and QR links. The build generates 404.html and an
+   empty .nojekyll. Direct routes render the SPA with GitHub Pages' HTTP 404 status.
 
-共有URL・QRは公開中のURL（実行時の window.location.origin + BASE_URL）から自動生成されるため、VITE_PUBLIC_SITE_URL は通常不要です。独自ドメイン等でURLを固定したい場合のみ設定してください。未設定・空白のみの場合は実行時のURLを使います。
+共有URL・QRは公開中のURL（実行時の window.location.origin + BASE_URL）から自動生成されるため、VITE_PUBLIC_SITE_URL は通常不要です。
+独自ドメイン等でURLを固定したい場合のみ設定してください。未設定・空白のみの場合は実行時のURLを使います。
 
-BASE_PATH defaults to /; a trailing slash is optional. VITE_PUBLIC_SITE_URL accepts a subpath with or without a trailing slash; its fallback is the current origin + BASE_URL. Leave BASE_PATH unset for Vercel root hosting. The production admin exclusion remains unchanged.
+BASE_PATH defaults to /; a trailing slash is optional. VITE_PUBLIC_SITE_URL accepts a subpath with or without
+a trailing slash; its fallback is the current origin + BASE_URL. Leave BASE_PATH unset for Vercel root
+hosting. The production admin exclusion remains unchanged.
+
+
+4文字は酵素／非酵素、膜結合／可溶性、単量体／多量体、ヒトももつ／もたないの分類です。性格との対応はゲーム上のたとえです。

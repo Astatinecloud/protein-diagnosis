@@ -24,7 +24,9 @@ describe.each(['/', '/protein-diagnosis/'])('base %s', base => {
       expect(assetPath(path)).toBe(base + path);
       expect(assetPath('/' + path)).toBe(base + path);
     }
-    expect(imagePath(proteins.proteins[0])).toBe(base + 'structures/' + proteins.proteins[0].structure.pdbId.toLowerCase() + '.jpeg');
+    expect(imagePath(proteins.proteins[0])).toBe(
+      base + 'structures/' + proteins.proteins[0].structure.pdbId.toLowerCase() + '.jpeg',
+    );
     expect(routerBasename()).toBe(base === '/' ? undefined : '/protein-diagnosis');
   });
   it('builds fallback top and result URLs from origin and base', () => {

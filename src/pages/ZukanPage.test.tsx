@@ -1,4 +1,4 @@
-﻿import { fireEvent, render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { expect, it } from 'vitest';
 import App from '../App';
@@ -16,7 +16,9 @@ it('lists the shared protein dataset with the result first, structure links and 
   expect(cards[0].dataset.proteinId).toBe('gfp');
   expect(within(cards[0]).getByText('あなたのタンパク質！')).toBeTruthy();
   expect(screen.getAllByText('あなたのタンパク質！')).toHaveLength(1);
-  expect(cards.slice(1).map(card => card.dataset.proteinId)).toEqual(data.proteins.filter(p => p.id !== 'gfp').map(p => p.id));
+  expect(cards.slice(1).map(card => card.dataset.proteinId)).toEqual(
+    data.proteins.filter(p => p.id !== 'gfp').map(p => p.id),
+  );
   for (const link of screen.getAllByRole('link', { name: '診断結果に戻る' })) {
     expect(link.getAttribute('href')).toBe('/result/gfp');
   }
@@ -43,7 +45,9 @@ it('accepts every result id from the shared dataset', () => {
   for (const protein of data.proteins) {
     const view = open(`/result/${protein.id}`);
     expect(screen.getByText(protein.nameEn)).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'ほかのタンパク質も見てみる！' }).getAttribute('href')).toBe(`/result/${protein.id}/zukan`);
+    expect(screen.getByRole('link', { name: 'ほかのタンパク質も見てみる！' }).getAttribute('href')).toBe(
+      `/result/${protein.id}/zukan`,
+    );
     view.unmount();
   }
 });
