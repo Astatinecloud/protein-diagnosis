@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import data from '../data/proteins.json';
 import questions from '../data/questions.json';
 import { axes, axisCovariance, identity, inverseSquareRoot } from './whitening';
@@ -8,11 +8,14 @@ import { normalize, rawScore, statistics } from './scoring';
 it('covers exactly sixteen codes and disjoint retired ids with local JPEGs', () => {
   const expected = ['ES', 'EB', 'NS', 'NB'].flatMap(row => ['UH', 'UX', 'TH', 'TX'].map(col => row + col));
   expect(data.proteins.map(p => p.typeCode).sort()).toEqual(expected.sort());
-  expect(data.retired).toHaveLength(8);
+  expect(new Set(data.retired.map(p => p.id)).size).toBe(data.retired.length);
   for (const retired of data.retired)
     expect(data.proteins.some(p => p.id === retired.id)).toBe(false);
   for (const p of data.proteins)
     expect(existsSync('public/structures/' + p.structure.pdbId.toLowerCase() + '.jpeg')).toBe(true);
+  expect(readdirSync('public/structures').filter(file => file.endsWith('.jpeg')).sort()).toEqual(
+    data.proteins.map(p => p.structure.pdbId.toLowerCase() + '.jpeg').sort(),
+  );
   expect(readFileSync('src/data/proteins.json')).toEqual(readFileSync('design/proteins.json'));
 });
 

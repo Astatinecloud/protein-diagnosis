@@ -73,4 +73,4 @@
 | NBUH | rhodopsin | 16,545 | 6.3114% |
 | NBUX | ompa | 17,114 | 6.5285% |
 | NBTH | aquaporin | 16,575 | 6.3229% |
-| NBTX | spike | 16,036 | 6.1172% |
+| NBTX | lh2 | 16,036 | 6.1172% |
