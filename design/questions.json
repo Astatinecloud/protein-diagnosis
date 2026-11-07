@@ -26,7 +26,7 @@
       "text": "受験で選ぶ私立大学は？",
       "options": [
         { "id": "q3a", "label": "早稲田（日本）", "scores": { "action": 2, "flexible": 1 } },
-        { "id": "q3b", "label": "オックスフォード（UK）", "scores": { "guard": 2, "steady": 1 } },
+        { "id": "q3b", "label": "慶應義塾大学（日本）", "scores": { "guard": 2, "steady": 1 } },
         { "id": "q3c", "label": "MIT（USA）", "scores": { "curious": 2, "steady": 1 } },
         { "id": "q3d", "label": "ハーバード（USA）", "scores": { "flexible": 2, "harmony": 1 } }
       ]
@@ -53,7 +53,7 @@
     },
     {
       "id": "q6",
-      "text": "明日提出のレポート、まだ白紙。どうする？",
+      "text": "明日提出の課題、まだ白紙。どうする？",
       "options": [
         { "id": "q6a", "label": "友達に「どこまで終わった？」と聞きまくる", "scores": { "harmony": 2, "support": 1 } },
         { "id": "q6b", "label": "今から本気出す。徹夜で完成させる！", "scores": { "action": 2, "flexible": 1 } },
